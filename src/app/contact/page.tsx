@@ -110,15 +110,15 @@ const Page = () => {
             <div className="space-y-6">
               <motion.div variants={itemVariants} className="flex items-center gap-4">
                 <FiPhone className="text-[#C9F31D] text-2xl" />
-                <p>(704) 555-0127</p>
+                <p>+92 333 1435476</p>
               </motion.div>
               <motion.div variants={itemVariants} className="flex items-center gap-4">
                 <FiMail className="text-[#C9F31D] text-2xl" />
-                <p>hello@pentaclay.com</p>
+                <p>tahir_csf13@hotmail.com</p>
               </motion.div>
               <motion.div variants={itemVariants} className="flex items-center gap-4">
                 <FiMapPin className="text-[#C9F31D] text-2xl" />
-                <p>8502 Preston Rd. Inglewood, Maine 98380</p>
+                <p>Ichra Lahore, Pakistan</p>
               </motion.div>
             </div>
           </motion.div>

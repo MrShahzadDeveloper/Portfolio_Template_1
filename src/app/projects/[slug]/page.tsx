@@ -216,7 +216,7 @@ const ProjectDetailPage = ({ params }: { params: Promise<{ slug: string }> }) =>
           </div>
 
           {/* Share On */}
-          <motion.div variants={itemVariants} className="mt-8">
+          {/* <motion.div variants={itemVariants} className="mt-8">
             <h4 className="text-[#D8D8D8] text-base sm:text-lg mb-3">
               Share On:
             </h4>
@@ -236,7 +236,7 @@ const ProjectDetailPage = ({ params }: { params: Promise<{ slug: string }> }) =>
                 );
               })}
             </div>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </section>
     </>
