@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tahir Mehmood",
+  title: "Jon Deo",
   description: "Hi there, This is my Portfolio",
 };
 
