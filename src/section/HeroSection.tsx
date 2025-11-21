@@ -8,7 +8,13 @@ import Circle from "@/components/Circle";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 
-// ✅ Properly typed variants
+/**
+ * HeroSection - Envato/ThemeForest ready
+ * This section uses placeholder/demo data so buyers can replace easily.
+ * Author info, titles, and description are all generic.
+ */
+
+// ✅ Properly typed variants for motion animations
 const textVariants: Variants = {
   hidden: { y: 50, opacity: 0 },
   visible: (custom: number) => ({
@@ -21,14 +27,14 @@ const textVariants: Variants = {
 const HeroSection = () => {
   return (
     <section className="relative w-full h-[70vh] sm:h-screen flex items-center px-4 sm:px-8 md:px-16 xl:px-32 sm:pt-24 text-white bg-[url('/bg-grid.svg')] bg-no-repeat bg-left bg-contain overflow-hidden pb-8 md:pb-20">
-      {/* Glowing Circle */}
+      {/* Glowing Circle background */}
       <div className="absolute left-[-100px] top-[40%] -translate-y-1/2 -z-10 pointer-events-none">
         <Circle />
       </div>
 
-      {/* Content */}
+      {/* Content Wrapper */}
       <div className="relative z-10 ">
-        {/* Intro text */}
+        {/* Intro Text */}
         <motion.div
           className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5 mb-4"
           initial="hidden"
@@ -36,13 +42,15 @@ const HeroSection = () => {
           variants={textVariants}
           custom={0}
         >
+          {/* Replace "Your Name" with buyer's info */}
           <h3 className="font-bold text-sm sm:text-xl text-center sm:text-left">
-            Hey There! Tahir Mehmood
+            Hey There! John Doe {/* Replace "John Doe" with your own name */}
           </h3>
+
           <hr className="hidden sm:block w-[80px] border-[#575757]" />
         </motion.div>
 
-        {/* Hero Title with BG */}
+        {/* Hero Title with Background Image */}
         <div className="relative flex flex-col gap-6 sm:gap-10">
           {/* Background image */}
           <div className="absolute sm:-right-[100px] top-[90%] sm:top-[70%] -translate-y-1/2 -z-10 opacity-70 pointer-events-none">
@@ -77,10 +85,10 @@ const HeroSection = () => {
                 variants={textVariants}
                 className="text-5xl sm:text-7xl xl:text-[150px] font-bold uppercase leading-none relative z-10"
               >
-                App
+                Web
               </motion.h1>
 
-              {/* ✅ Slow rotating star */}
+              {/* Slow rotating star */}
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
@@ -96,10 +104,14 @@ const HeroSection = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4 relative z-10">
-              {/* ✅ Rings float on x + y axis */}
+              {/* Floating rings animation */}
               <motion.div
                 animate={{ y: [0, -10, 0], x: [0, 10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               >
                 <Image
                   src="/rings.svg"
@@ -110,19 +122,20 @@ const HeroSection = () => {
                 />
               </motion.div>
 
+              {/* Main Hero Text */}
               <motion.h1
                 custom={3}
                 initial="hidden"
                 animate="visible"
                 variants={textVariants}
-                className="text-5xl text-center sm:text-start sm:text-7xl  xl:text-[150px] font-bold uppercase leading-none"
+                className="text-5xl text-center sm:text-start sm:text-7xl xl:text-[150px] font-bold uppercase leading-none"
               >
                 Developer
               </motion.h1>
             </div>
           </div>
 
-          {/* Paragraph */}
+          {/* Paragraph / Description */}
           <motion.p
             custom={4}
             initial="hidden"
@@ -130,13 +143,14 @@ const HeroSection = () => {
             variants={textVariants}
             className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-lg md:max-w-2xl text-[#D2D2D2] mt-6 sm:mt-0 text-center sm:text-left relative z-10"
           >
-            I believe in the power of innovation and creativity to transform
-            your ideas into exceptional digital experiences. Working closely
-            with you, I strive to bring your vision to life.
+            I believe in creativity and innovation to transform ideas into
+            amazing digital experiences. Working closely with clients, John Doe
+            strives to bring visions to life.{" "}
+            {/* Replace with your own intro */}
           </motion.p>
         </div>
 
-        {/* CTA Button */}
+          {/* CTA Button */}
         <motion.div
           custom={5}
           initial="hidden"

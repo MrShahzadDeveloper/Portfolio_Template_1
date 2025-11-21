@@ -7,13 +7,20 @@ import ProjectDetailCircle from "./ProjectDetailCircle";
 import { motion, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
+// ==============================
+// Props Interface
+// ==============================
 interface HeroHeaderProps {
-  introText: string;
-  heading1: string;
-  heading2: string;
+  introText: string;   // Introductory small text above headings
+  heading1: string;    // First main heading
+  heading2: string;    // Second main heading
 }
 
-// Variants for staggered text
+// ==============================
+// Animation Variants
+// ==============================
+
+// Staggered container for child animations
 const containerVariants: Variants = {
   hidden: {},
   visible: {
@@ -21,6 +28,7 @@ const containerVariants: Variants = {
   },
 };
 
+// Fade-up animation for text and elements
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
@@ -30,11 +38,15 @@ const fadeUp: Variants = {
   },
 };
 
+// ==============================
+// HeroHeader Component
+// ==============================
 const HeroHeader: React.FC<HeroHeaderProps> = ({
   introText,
   heading1,
   heading2
 }) => {
+  // Scroll-triggered animation hook
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.2,
@@ -48,13 +60,21 @@ const HeroHeader: React.FC<HeroHeaderProps> = ({
       animate={inView ? "visible" : "hidden"}
       className="relative min-h-[40vh] md:min-h-[60vh] py-10 md:py-20 lg:py-36 flex flex-col justify-center text-white overflow-hidden"
     >
-      {/* Circle on the left */}
+      {/* ==============================
+          Background Circle Component
+          Decorative floating circle on the left
+      =============================== */}
       <div className="absolute left-[-100px] top-[40%] -translate-y-1/2 -z-10 pointer-events-none">
         <Circle />
       </div>
 
+      {/* ==============================
+          Header Content Wrapper
+      =============================== */}
       <div className="relative z-10 w-full px-4 sm:px-8 md:px-16 xl:px-32">
-        {/* Header intro */}
+        {/* ==============================
+            Intro Text + Horizontal Line
+        =============================== */}
         <motion.div
           variants={fadeUp}
           className="flex flex-col md:flex-row md:items-center gap-3 sm:gap-5 mb-6 text-center md:text-left"
@@ -63,11 +83,15 @@ const HeroHeader: React.FC<HeroHeaderProps> = ({
           <hr className="hidden sm:block w-[80px] border-[#575757]" />
         </motion.div>
 
-        {/* Title + Circle */}
+        {/* ==============================
+            Main Headings + Decorative Elements
+        =============================== */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-10 w-full">
-          {/* Title Block */}
+          {/* ==============================
+              Left Title Block
+          =============================== */}
           <div className="text-center md:text-left">
-            {/* First Line */}
+            {/* First Heading + Rotating Star */}
             <motion.div
               variants={fadeUp}
               className="flex flex-col sm:flex-row sm:items-end sm:gap-6 mb-5 justify-center md:justify-start"
@@ -76,7 +100,7 @@ const HeroHeader: React.FC<HeroHeaderProps> = ({
                 {heading1}
               </motion.h1>
 
-              {/* Rotating Star */}
+              {/* Rotating Star Decoration */}
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
@@ -91,12 +115,12 @@ const HeroHeader: React.FC<HeroHeaderProps> = ({
               </motion.div>
             </motion.div>
 
-            {/* Second Line */}
+            {/* Second Heading + Floating Rings */}
             <motion.div
               variants={fadeUp}
               className="flex flex-col sm:flex-row sm:items-center sm:gap-4 justify-center md:justify-start"
             >
-              {/* Floating Rings */}
+              {/* Floating Rings Animation */}
               <motion.div
                 animate={{ y: [0, -10, 0], x: [0, 10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -119,7 +143,10 @@ const HeroHeader: React.FC<HeroHeaderProps> = ({
             </motion.div>
           </div>
 
-          {/* Right Project Circle */}
+          {/* ==============================
+              Right Project Circle
+              Decorative circular element (e.g., project animation)
+          =============================== */}
           <motion.div
             variants={fadeUp}
             className="flex-shrink-0 flex justify-center md:justify-end w-full md:w-auto mb-30"

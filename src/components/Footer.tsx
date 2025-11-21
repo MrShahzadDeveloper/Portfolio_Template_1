@@ -1,25 +1,23 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaGithub,
-} from "react-icons/fa6";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaGithub } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// ✅ Footer Component
 export default function Footer() {
   const [year, setYear] = useState<number | null>(null);
   const [email, setEmail] = useState("");
 
+  // Set current year dynamically
   useEffect(() => {
     setYear(new Date().getFullYear());
   }, []);
 
+  // Handle newsletter subscription form
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) {
@@ -42,33 +40,21 @@ export default function Footer() {
     <>
       <footer className="bg-black text-gray-300 px-4 md:px-16 xl:px-32 py-6 md:py-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          {/* About Me */}
+          
+          {/* About Jon Deo */}
           <div>
             <h3 className="text-lg font-bold text-white mb-4">About Me</h3>
             <p className="text-sm leading-6">
-              I’m a software engineer specializing in app and web development,
-              dedicated to building scalable and user-friendly solutions. I
-              transform ideas into impactful digital experiences.
+              I’m Jon Deo, a passionate software engineer specializing in app and web development.
+              I create scalable, user-friendly digital solutions that turn ideas into impactful experiences.
             </p>
-            {/* Social Icons */}
+            {/* Social Media Links */}
             <div className="flex gap-4 mt-6">
               {[
-                {
-                  Icon: FaFacebookF,
-                  link: "https://www.facebook.com/share/17Qb1udj8M/?mibextid=wwXIfr",
-                },
-                {
-                  Icon: FaLinkedinIn,
-                  link: "https://www.linkedin.com/in/tahir-mehmood-0b627810b/",
-                },
-                {
-                  Icon: FaInstagram,
-                  link: "https://www.instagram.com/frankiz432?igsh=MWJ2aGZxczA0bmEycg%3D%3D&utm_source=qr",
-                },
-                {
-                  Icon: FaGithub,
-                  link: "https://github.com/Frankiz123",
-                },
+                { Icon: FaFacebookF, link: "https://www.facebook.com/jondeo" },
+                { Icon: FaLinkedinIn, link: "https://www.linkedin.com/in/jondeo/" },
+                { Icon: FaInstagram, link: "https://www.instagram.com/jondeo/" },
+                { Icon: FaGithub, link: "https://github.com/jondeo" },
               ].map(({ Icon, link }, idx) => (
                 <a
                   key={idx}
@@ -83,7 +69,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Navigation */}
+          {/* Navigation Links */}
           <div>
             <h3 className="text-lg font-bold text-white mb-4">Navigation</h3>
             <ul className="space-y-3 text-sm">
@@ -91,7 +77,7 @@ export default function Footer() {
                 { name: "Home", href: "/" },
                 { name: "About", href: "/about" },
                 { name: "Services", href: "/services" },
-                { name: "My Projects", href: "/projects" },
+                { name: "Projects", href: "/projects" },
               ].map((item) => (
                 <li key={item.name}>
                   <Link
@@ -108,7 +94,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Services Offered */}
           <div>
             <h3 className="text-lg font-bold text-white mb-4">Services</h3>
             <ul className="space-y-3 text-sm">
@@ -133,7 +119,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Newsletter Subscription */}
           <div>
             <h3 className="text-lg font-bold text-white mb-4">Newsletter</h3>
             <form
@@ -159,11 +145,11 @@ export default function Footer() {
 
         {/* Bottom Copyright */}
         <div className="text-center text-xs text-gray-500 mt-12 border-t border-gray-800 pt-6">
-          © {year ?? ""} Tahir Portfolio. All rights reserved.
+          © {year ?? ""} Jon Deo. All rights reserved.
         </div>
       </footer>
 
-      {/* Toast Container */}
+      {/* Toast Notifications */}
       <ToastContainer />
     </>
   );

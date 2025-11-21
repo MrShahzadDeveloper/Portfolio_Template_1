@@ -1,4 +1,5 @@
 'use client'
+
 import HeroHeader from "@/components/Header";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,12 +10,22 @@ import { motion } from "framer-motion";
 const ProjectDetailPage: React.FC = () => {
   return (
     <section className="flex flex-col min-h-[80vh]">
+      {/* ==============================
+          Hero Header Section
+          Displays intro text and main headings
+          Envato/ThemeForest style comment
+      =============================== */}
       <HeroHeader
         introText="Detailed Presentation"
         heading1="Project"
         heading2="Completed"
       />
 
+      {/* ==============================
+          Floating Star Animation
+          Animated star floating above the projects grid
+          Using Framer Motion for smooth y/x movement
+      =============================== */}
       <div className="flex justify-center items-end mb-12 md:mb-20">
         <motion.div
           animate={{ y: [0, -10, 0], x: [0, 10, 0] }}
@@ -30,6 +41,12 @@ const ProjectDetailPage: React.FC = () => {
         </motion.div>
       </div>
 
+      {/* ==============================
+          Projects Grid Section
+          Maps through the projects array and displays project cards
+          Each card has hover overlay with project title button
+          Animated entrance using Framer Motion
+      =============================== */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 px-4 sm:px-8 md:px-16 xl:px-32 pb-10 md:pb-20">
         {projects.map((project, index) => (
           <motion.div
@@ -39,8 +56,13 @@ const ProjectDetailPage: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
           >
+            {/* ==============================
+                Single Project Card
+                Contains project image and hover overlay
+            =============================== */}
             <Link href={`/projects/${project.slug}`} className="group">
               <div className="overflow-hidden relative">
+                {/* Project Image */}
                 <Image
                   width={600}
                   height={600}
@@ -48,11 +70,12 @@ const ProjectDetailPage: React.FC = () => {
                   alt={project.title}
                   className="
                     w-full 
-                    h-[300px] sm:h-[400px] md:h-[500px] lg:h-[650px] xl:h-[800px] 
                     object-cover object-top 
                     transition duration-500
                   "
                 />
+
+                {/* Hover Overlay */}
                 <div className="
                     absolute inset-0 bg-black/40 
                     opacity-0 group-hover:opacity-100 
@@ -76,6 +99,11 @@ const ProjectDetailPage: React.FC = () => {
         ))}
       </div>
 
+      {/* ==============================
+          Contact Section
+          Reusable contact CTA component
+          Envato-style structured comment
+      =============================== */}
       <ContactSection />
     </section>
   );

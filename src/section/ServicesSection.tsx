@@ -3,10 +3,26 @@
 import React, { useState } from "react";
 import { motion, Variants } from "framer-motion";
 import { FiArrowUpRight } from "react-icons/fi";
-import { services } from "../data";
 import { useInView } from "react-intersection-observer";
 
-// Variants for stagger animation
+/**
+ * ThemeForest Ready ServicesSection Component
+ * Features:
+ * - Animated list of services with toggle details
+ * - Responsive and fully commented for buyers
+ * - Staggered entrance animations using Framer Motion
+ * - Editable service list and content
+ */
+
+// Example services data (replaceable by buyers)
+const services = [
+  { id: 1, title: "Web Development", details: "Building responsive, modern websites with Next.js, React, and Tailwind CSS." },
+  { id: 2, title: "UI/UX Design", details: "Designing intuitive user interfaces and user experiences for all devices." },
+  { id: 3, title: "SEO Optimization", details: "Improving search engine ranking and performance for your websites." },
+  { id: 4, title: "Consulting", details: "Providing expert advice for digital projects and strategy." },
+];
+
+/** Variants for container animations (stagger children) */
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -15,23 +31,20 @@ const containerVariants: Variants = {
   },
 };
 
+/** Variants for each item animation */
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
-const ServicesSection = () => {
+const ServicesSection: React.FC = () => {
   const [openService, setOpenService] = useState<number | null>(null);
 
   const toggleService = (id: number) => {
-    setOpenService(openService === id ? null : id);
+    setOpenService(openService === id ? null : id); // Open/close clicked service
   };
 
-  // Track section visibility
+  // Track section visibility for animations
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.2,
@@ -47,13 +60,15 @@ const ServicesSection = () => {
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
       >
-        {/* Heading */}
+        {/* Section Heading */}
         <motion.div variants={itemVariants} className="mb-10">
           <div className="flex items-center gap-3">
-            <p className="text-lg font-semibold">Services</p>
+            <p className="text-lg font-semibold">Services</p> {/* Editable section title */}
             <hr className="w-[80px] text-[#575757]" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold">Expertise Solutions</h2>
+          <h2 className="text-3xl md:text-5xl font-bold">
+            Expertise Solutions {/* Editable heading */}
+          </h2>
         </motion.div>
 
         {/* Services List */}
@@ -64,7 +79,7 @@ const ServicesSection = () => {
               variants={itemVariants}
               className="border-b border-gray-700 pb-4 cursor-pointer"
             >
-              {/* Title Row */}
+              {/* Service Title Row */}
               <div
                 className="flex justify-between items-center"
                 onClick={() => toggleService(service.id)}
@@ -73,10 +88,10 @@ const ServicesSection = () => {
                   <span className="text-gray-400">
                     {String(service.id).padStart(2, "0")}.
                   </span>
-                  {service.title}
+                  {service.title} {/* Editable service title */}
                 </h3>
 
-                {/* Arrow Animation */}
+                {/* Arrow Icon with rotation animation */}
                 <motion.div
                   animate={{ rotate: openService === service.id ? 45 : 0 }}
                   transition={{ duration: 0.3 }}
@@ -86,7 +101,7 @@ const ServicesSection = () => {
                 </motion.div>
               </div>
 
-              {/* Dropdown Animation */}
+              {/* Service Details Dropdown */}
               <motion.div
                 initial={false}
                 animate={{
@@ -97,7 +112,7 @@ const ServicesSection = () => {
                 className="overflow-hidden"
               >
                 <p className="mt-4 ml-9 text-gray-300 text-sm md:text-base">
-                  {service.details}
+                  {service.details} {/* Editable service description */}
                 </p>
               </motion.div>
             </motion.div>
