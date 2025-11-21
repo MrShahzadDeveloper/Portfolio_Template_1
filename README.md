@@ -20,7 +20,7 @@ A modern, fully responsive **Next.js** template for agencies, freelancers, or bu
 ## Demo
 
 You can view a live demo of this template here:
-[Insert Demo Link Here]
+[https://portfoliocustomtemplates.netlify.app/]
 
 ---
 
@@ -37,12 +37,6 @@ This project was bootstrapped with [`create-next-app`](https://nextjs.org/docs/a
 
 ### Installation
 
-Clone the repository:
-
-```bash
-git clone https://github.com/yourusername/nextjs-portfolio-template.git
-cd nextjs-portfolio-template
-```
 
 Install dependencies:
 
